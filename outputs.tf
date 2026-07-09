@@ -147,13 +147,13 @@ output "igw_id" {
 # lbc Helm metadata outputs
 
 output "lbc_helm_metadata" {
-  value = helm_release.lb_controller[*].metadata
+  value = helm_release.my_lb_controller[*].metadata
 
   description = "Metadata block outlining the status of the deployed Load Balancer Controller release."
 }
 
 output "ext_dns_helm_metadata" {
-  value = helm_release.external_dns[*].metadata
+  value = helm_release.my_external_dns_controller[*].metadata
 
   description = "Metadata block outlining the status of the deployed External DNS Controller release."
 }

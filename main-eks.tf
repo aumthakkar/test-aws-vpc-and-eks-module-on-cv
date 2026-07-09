@@ -6,7 +6,7 @@ resource "aws_eks_cluster" "my_eks_cluster" {
   name    = var.cluster_name
   version = var.eks_cluster_version
 
-  role_arn = aws_iam_role.eks_master_role.arn
+  role_arn = aws_iam_role.my_eks_cluster_role.arn
 
   enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 

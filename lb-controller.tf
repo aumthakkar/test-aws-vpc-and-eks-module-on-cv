@@ -1,6 +1,6 @@
 
 
-resource "helm_release" "lb_controller" {
+resource "helm_release" "my_lb_controller" {
   count = var.create_ingress_lb_controller ? 1 : 0
 
   name = "aws-load-balancer-controller"
