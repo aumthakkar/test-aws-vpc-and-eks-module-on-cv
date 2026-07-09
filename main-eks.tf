@@ -35,7 +35,7 @@ resource "aws_eks_cluster" "my_eks_cluster" {
 resource "aws_eks_node_group" "my_eks_public_nodegroup" {
   cluster_name    = aws_eks_cluster.my_eks_cluster.name
   node_group_name = var.eks_public_nodegroup_name
-  node_role_arn   = aws_iam_role.eks_nodegroup_role.arn
+  node_role_arn   = aws_iam_role.my_eks_nodegroup_role.arn
   subnet_ids      = aws_subnet.my_public_subnets[*].id
 
   ami_type       = var.public_nodegroup_ami_type
@@ -79,7 +79,7 @@ resource "aws_eks_node_group" "my_eks_public_nodegroup" {
 resource "aws_eks_node_group" "my_eks_private_nodegroup" {
   cluster_name    = aws_eks_cluster.my_eks_cluster.name
   node_group_name = var.eks_private_nodegroup_name
-  node_role_arn   = aws_iam_role.eks_nodegroup_role.arn
+  node_role_arn   = aws_iam_role.my_eks_nodegroup_role.arn
   subnet_ids      = aws_subnet.my_private_subnets[*].id
 
   scaling_config {
@@ -109,12 +109,12 @@ resource "aws_eks_node_group" "my_eks_private_nodegroup" {
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.
   depends_on = [
-    aws_iam_role_policy_attachment.eks-AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.eks-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.eks-AmazonEC2ContainerRegistryReadOnly,
-    aws_iam_role_policy_attachment.eks-AmazonEBSCSIDriverPolicy,
-    aws_iam_role_policy_attachment.eks-AmazonEFSCSIDriverPolicy,
-    aws_iam_role_policy_attachment.eks-CloudWatchAgentServerPolicy
+    aws_iam_role_policy_attachment.eks_AmazonEKSWorkerNodePolicy,
+    aws_iam_role_policy_attachment.eks_AmazonEKS_CNI_Policy,
+    aws_iam_role_policy_attachment.eks_AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.eks_AmazonEBSCSIDriverPolicy,
+    aws_iam_role_policy_attachment.eks_AmazonEFSCSIDriverPolicy,
+    aws_iam_role_policy_attachment.eks_CloudWatchAgentServerPolicy
   ]
 
 }

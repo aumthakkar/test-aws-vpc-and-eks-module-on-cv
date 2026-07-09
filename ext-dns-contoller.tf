@@ -1,5 +1,5 @@
 
-resource "helm_release" "my_ext_dns_controller" {
+resource "helm_release" "my_external_dns_controller" {
   count = var.create_external_dns_controller ? 1 : 0
 
   name      = "external-dns"

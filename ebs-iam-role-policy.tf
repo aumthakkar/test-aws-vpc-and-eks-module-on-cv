@@ -25,7 +25,7 @@ resource "aws_iam_role" "my_ebs_csi_iam_role" {
   }
 }
 
-resource "aws_iam_role_policy_attachment" "eks-AmazonEBSCSIDriverPolicy" {
+resource "aws_iam_role_policy_attachment" "eks_AmazonEBSCSIDriverPolicy" {
   count = var.create_ebs_csi_driver ? 1 : 0
 
   role       = aws_iam_role.my_ebs_csi_iam_role[count.index].name

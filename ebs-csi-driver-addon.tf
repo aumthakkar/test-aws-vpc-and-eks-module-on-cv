@@ -1,5 +1,5 @@
 
-data "aws_eks_addon_version" "ebs_latest_driver" {
+data "aws_eks_addon_version" "ebs_csi_driver_latest" {
   addon_name = "aws-ebs-csi-driver"
 
   kubernetes_version = aws_eks_cluster.my_eks_cluster.version
