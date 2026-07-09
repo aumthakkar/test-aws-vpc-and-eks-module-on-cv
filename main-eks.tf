@@ -63,12 +63,12 @@ resource "aws_eks_node_group" "my_eks_public_nodegroup" {
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.eks-AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.eks-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.eks-AmazonEC2ContainerRegistryReadOnly,
-    aws_iam_role_policy_attachment.eks-AmazonEBSCSIDriverPolicy,
-    aws_iam_role_policy_attachment.eks-AmazonEFSCSIDriverPolicy,
-    aws_iam_role_policy_attachment.eks-CloudWatchAgentServerPolicy
+    aws_iam_role_policy_attachment.eks_AmazonEKSWorkerNodePolicy,
+    aws_iam_role_policy_attachment.eks_AmazonEKS_CNI_Policy,
+    aws_iam_role_policy_attachment.eks_AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.eks_AmazonEBSCSIDriverPolicy,
+    aws_iam_role_policy_attachment.eks_AmazonEFSCSIDriverPolicy,
+    aws_iam_role_policy_attachment.eks_CloudWatchAgentServerPolicy
   ]
 }
 
