@@ -44,9 +44,6 @@ locals {
   }
 }
 
-# Extract OIDC Provider from OIDC Provider ARN
 
-locals {
-  aws_iam_openid_connect_provider_extract = element(split("oidc-provider/", "${aws_iam_openid_connect_provider.oidc_provider.arn}"), 1)
-}
+
 

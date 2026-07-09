@@ -32,12 +32,12 @@ output "cluster_security_group_id" {
 
 output "cluster_iam_role_name" {
   description = "IAM role name of the EKS cluster."
-  value       = aws_iam_role.eks_master_role.name
+  value       = aws_iam_role.my_eks_cluster_role.name
 }
 
 output "cluster_iam_role_arn" {
   description = "IAM role ARN of the EKS cluster."
-  value       = aws_iam_role.eks_master_role.arn
+  value       = aws_iam_role.my_eks_cluster_role.arn
 }
 
 output "cluster_oidc_issuer_url" {
@@ -93,33 +93,23 @@ output "node_group_private_version" {
 }
 
 
-# EKS IRSA related Outputs
-
-output "aws_iam_openid_connect_provider_arn" {
-  value = aws_iam_openid_connect_provider.oidc_provider.arn
-}
-
-output "aws_iam_openid_connect_provider_extract_from_arn" {
-  value = local.aws_iam_openid_connect_provider_extract
-}
-
 # EKS-EBS-CSI-Addon related Outputs
 
 output "ebs_eks_addon_arn" {
-  value = aws_eks_addon.aws_ebs_csi_driver[*].arn
+  value = aws_eks_addon.my_ebs_csi_driver[*].arn
 }
 
 output "ebs_eks_addon_id" {
-  value = aws_eks_addon.aws_ebs_csi_driver[*].id
+  value = aws_eks_addon.my_ebs_csi_driver[*].id
 }
 
 # EKS-EFS-CSI-Addon related Outputs
 output "efs_eks_addon_arn" {
-  value = aws_eks_addon.aws_efs_csi_driver[*].arn
+  value = aws_eks_addon.my_efs_csi_driver[*].arn
 }
 
 output "efs_eks_addon_id" {
-  value = aws_eks_addon.aws_efs_csi_driver[*].id
+  value = aws_eks_addon.my_efs_csi_driver[*].id
 }
 
 # === vpc networking/outputs.tf === 
