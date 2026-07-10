@@ -8,7 +8,7 @@ resource "aws_iam_role" "my_eks_nodegroup_role" {
       {
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = ""
+        Sid    = "EKS_Nodegroup_IAM_Role"
         Principal = {
           Service = "ec2.amazonaws.com"
         }
@@ -34,5 +34,10 @@ resource "aws_iam_role_policy_attachment" "eks_AmazonEKS_CNI_Policy" {
 resource "aws_iam_role_policy_attachment" "eks_AmazonEC2ContainerRegistryReadOnly" {
   role       = aws_iam_role.my_eks_nodegroup_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+}
+
+resource "aws_iam_role_policy_attachment" "eks_AmazonSSMManagedInstanceCore" {
+  role       = aws_iam_role.my_eks_nodegroup_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 

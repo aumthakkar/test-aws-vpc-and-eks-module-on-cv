@@ -116,7 +116,7 @@ variable "private_subnet_cidr_addresses" {
 }
 
 # Cloudwatch, EBS, EFS and Load-Balancer EKS Addon related Variables
-variable "create_cloudwatch_observability_and_fluentbit_agents" {
+variable "enable_cloudwatch_observability" {
   type = bool
 
   description = "Variable to decide if CloudwWatch Observability Agent needs to be installed."

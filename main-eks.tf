@@ -68,7 +68,8 @@ resource "aws_eks_node_group" "my_eks_public_nodegroup" {
     aws_iam_role_policy_attachment.eks_AmazonEC2ContainerRegistryReadOnly,
     aws_iam_role_policy_attachment.eks_AmazonEBSCSIDriverPolicy,
     aws_iam_role_policy_attachment.eks_AmazonEFSCSIDriverPolicy,
-    aws_iam_role_policy_attachment.eks_CloudWatchAgentServerPolicy
+    aws_iam_role_policy_attachment.eks_CloudWatchAgentServerPolicy,
+    aws_iam_role_policy_attachment.eks_AmazonSSMManagedInstanceCore
   ]
 }
 

@@ -70,14 +70,14 @@ module "eks_cluster" {
 ## Description
 
 -    This module creates an AWS VPC in which it also creates an EKS cluster with conditional selections to create an EBS driver, EFS driver, Amazon Cloudwatch Observability addons, Load Balancer Ingress Controller and External DNS Controller.
-     - Apart from the all the other addons and Load Balancer Controller which are created in the kube-system namespace, the External DNS Controller is created in the default namespace.
+     - All addons are created in the kube-system namespace.
      - From the above list of addons and agents, each or all of those resources can be individually selected to be installed or abstained to be created based on the boolean value supplied to their respective arguments in the root module.
-     - Based on the addons/agents selected to be installed, it will also selectively create the right IAM permissions suitable to run those appropriately. 
+     - Based on the addons/agents selected to be installed, it will also selectively create the right IAM permissions suitable to run those appropriately.
          
--    For the AWS VPC, based on the count of the number of subnets selected by the user in the root module, it can conditonally, automatically create those subnets along with their IP addresses using the cidrsubnet() based on the VPC CIDR block selected. 
+-    For the AWS VPC, based on the count of the number of subnets selected by the user in the root module, it can conditonally, automatically create those subnets along with their IP addresses using the cidrsubnet() based on the VPC CIDR block selected.
      -    However, if the user needs to use the subnet IP addresses of their own choice, then those subnet IP addresses can be manually configured in the variables/*.tfvars file in the root module by supplying a value of "false" to the 'auto_create_subnet_addresses' argument in the root module.
-     -    These subnets are then created in the automatically selected and shuffled Availability Zones. 
--    This module also creates an Ingress Class with the controller type of Application Load Balancer. 
+     -    These subnets are then created in the automatically selected and shuffled Availability Zones.
+-    This module also creates an Ingress Class with the controller type of Application Load Balancer.
 
 ## Requirements
 
@@ -159,7 +159,7 @@ module "eks_cluster" {
 |                                                    |             |                                                                                                                                                                                                    |
 | EKS Cluster Resources:                             |             |                                                                                                                                                                                                    |
 | aws_iam_role.eks_master_role                       | resource    | AWS EKS Master IAM role with AmazonEKSClusterPolicy and AmazonEKSVPCResourceController IAM Policies attached.                                                                                      |
-| aws_iam_role.eks_nodegroup_role                    | resource    | AWS EKS Node Group IAM role with AmazonEKSWorkerNodePolicy, AmazonEKS_CNI_Policy, AmazonEC2ContainerRegistryReadOnly, AmazonEBSCSIDriverPolicy and AmazonEFSCSIDriverPolicy IAM Policies attached. |
+| aws_iam_role.eks_nodegroup_role with the following IAM policies attached:                    | resource    | AWS EKS Node Group IAM role with AmazonEKSWorkerNodePolicy, AmazonEKS_CNI_Policy, AmazonEC2ContainerRegistryReadOnly, AmazonEBSCSIDriverPolicy and AmazonEFSCSIDriverPolicy & AmazonSSMManagedInstanceCore  |
 | aws_iam_openid_connect_provider.oidc_provider      | resource    | AWS IAM OpenId Connect Provider.                                                                                                                                                                   |
 | http.lbc_iam_policy                                | data source | Load Balancer IAM policy.                                                                                                                                                                          |
 | aws_iam_role.lbc_iam_role                          | resource    | Load Balancer IAM role with an action of AssumeRolewithWebIdentity for the AWS IAM OIDC Provider Principal.                                                                                        |

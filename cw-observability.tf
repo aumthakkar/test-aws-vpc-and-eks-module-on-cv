@@ -6,8 +6,8 @@ data "aws_eks_addon_version" "cloudwatch_latest_driver" {
   most_recent        = true
 }
 
-resource "aws_eks_addon" "my_cloudwatch_csi_driver" {
-  count = var.create_ebs_csi_driver ? 1 : 0
+resource "aws_eks_addon" "my_cloudwatch_observability" {
+  count = var.enable_cloudwatch_observability ? 1 : 0
 
   cluster_name = aws_eks_cluster.my_eks_cluster.name
 
@@ -20,11 +20,11 @@ resource "aws_eks_addon" "my_cloudwatch_csi_driver" {
   configuration_values = null
 
   tags = {
-    Name = "${var.name_prefix}-cloudwatch-csi-driver"
+    Name = "${var.name_prefix}-cloudwatch-observability"
   }
 
   depends_on = [
     aws_eks_addon.my_eks_pod_identity_agent,
-    aws_eks_pod_identity_association.my_cloudwatch_driver_pod_identity_association
+    aws_eks_pod_identity_association.my_cloudwatch_observability_pod_identity_association
   ]
 }

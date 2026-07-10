@@ -22,7 +22,7 @@ resource "helm_release" "my_external_dns_controller" {
       value = "external-dns"
     },
     {
-      name  = "provider.name" # Defaults to aws anyway
+      name  = "provider.name" 
       value = "aws"
     },
     {

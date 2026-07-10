@@ -12,7 +12,7 @@ resource "aws_iam_role" "my_efs_csi_iam_role" {
           "sts:TagSession"
         ]
         Effect = "Allow"
-        Sid    = ""
+        Sid    = "EFS_CSI_IAM_Role"
         Principal = {
           Service = "pods.eks.amazonaws.com"
         }

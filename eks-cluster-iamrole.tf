@@ -8,7 +8,7 @@ resource "aws_iam_role" "my_eks_cluster_role" {
       {
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = ""
+        Sid    = "EKS_Cluster_Role"
         Principal = {
           Service = "eks.amazonaws.com"
         }
