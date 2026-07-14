@@ -49,7 +49,7 @@ resource "aws_subnet" "my_public_subnets" {
 }
 
 
-resource "aws_route_table" "public_route_table" {
+resource "aws_route_table" "my_public_route_table" {
   vpc_id = aws_vpc.my_eks_vpc.id
 
   tags = {
@@ -99,7 +99,7 @@ resource "aws_subnet" "my_private_subnets" {
 }
 
 
-resource "aws_default_route_table" "default_private_route_table" {
+resource "aws_default_route_table" "my_default_private_route_table" {
   default_route_table_id = aws_vpc.my_eks_vpc.default_route_table_id
 
   tags = {
@@ -108,7 +108,7 @@ resource "aws_default_route_table" "default_private_route_table" {
 }
 
 
-resource "aws_route_table" "private_route_table" {
+resource "aws_route_table" "my_private_route_table" {
   vpc_id = aws_vpc.my_eks_vpc.id
 
   tags = {
@@ -116,7 +116,7 @@ resource "aws_route_table" "private_route_table" {
   }
 }
 
-resource "aws_eip" "nat_gw_eip" {
+resource "aws_eip" "my_nat_gw_eip" {
   domain = "vpc"
 
   tags = {
@@ -128,7 +128,7 @@ resource "aws_eip" "nat_gw_eip" {
 
 
 resource "aws_nat_gateway" "my_nat_gateway" {
-  allocation_id = aws_eip.nat_gw_eip.id
+  allocation_id = aws_eip.my_nat_gw_eip.id
   subnet_id     = aws_subnet.my_public_subnets[0].id
 
   tags = {

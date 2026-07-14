@@ -22,7 +22,7 @@ resource "helm_release" "my_external_dns_controller" {
       value = "external-dns"
     },
     {
-      name  = "provider.name" 
+      name  = "provider.name"
       value = "aws"
     },
     {
@@ -33,6 +33,6 @@ resource "helm_release" "my_external_dns_controller" {
 
   depends_on = [
     aws_iam_role_policy_attachment.my_ext_dns_iam_role_policy_attachment
-    ]
+  ]
 
 }
