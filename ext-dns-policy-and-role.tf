@@ -48,7 +48,7 @@ resource "aws_iam_role" "my_ext_dns_iam_role" {
           "sts:TagSession"
         ]
         Effect = "Allow"
-        Sid    = "Ext_DNS_IAM_Role"
+        Sid    = "ExtDNSIAMRole"
         Principal = {
           Service = "pods.eks.amazonaws.com"
         }

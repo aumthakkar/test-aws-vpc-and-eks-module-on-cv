@@ -35,7 +35,7 @@ resource "aws_iam_role" "my_lbc_iam_role" {
           "sts:TagSession"
         ]
         Effect = "Allow"
-        Sid    = "LoadBalancer_Controller_IAM_Role"
+        Sid    = "LoadBalancerControllerIAMRole"
         Principal = {
           Service = "pods.eks.amazonaws.com"
         }

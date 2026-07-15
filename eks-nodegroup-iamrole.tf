@@ -8,7 +8,7 @@ resource "aws_iam_role" "my_eks_nodegroup_role" {
       {
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = "EKS_Nodegroup_IAM_Role"
+        Sid    = "EKSNodegroupIAMRole"
         Principal = {
           Service = "ec2.amazonaws.com"
         }

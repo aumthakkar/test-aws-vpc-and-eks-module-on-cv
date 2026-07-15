@@ -13,7 +13,7 @@ resource "aws_iam_role" "my_cloudwatch_iam_role" {
           "sts:TagSession"
         ]
         Effect = "Allow"
-        Sid    = "CW_IAM_Role"
+        Sid    = "CloudWatchIAMRole"
         Principal = {
           Service = "pods.eks.amazonaws.com"
         }
