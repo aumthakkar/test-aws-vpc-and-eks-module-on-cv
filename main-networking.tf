@@ -70,13 +70,13 @@ resource "aws_internet_gateway" "my_igw" {
 resource "aws_route_table_association" "public_rt_assoc" {
   count = var.public_subnet_count
 
-  route_table_id = aws_route_table.public_route_table.id
+  route_table_id = aws_route_table.my_public_route_table.id
   subnet_id      = aws_subnet.my_public_subnets[count.index].id
 }
 
 
 resource "aws_route" "public_route" {
-  route_table_id = aws_route_table.public_route_table.id
+  route_table_id = aws_route_table.my_public_route_table.id
 
   gateway_id             = aws_internet_gateway.my_igw.id
   destination_cidr_block = "0.0.0.0/0"
@@ -142,13 +142,13 @@ resource "aws_nat_gateway" "my_nat_gateway" {
 resource "aws_route_table_association" "private_rt_assoc" {
   count = var.private_subnet_count
 
-  route_table_id = aws_route_table.private_route_table.id
+  route_table_id = aws_route_table.my_private_route_table.id
   subnet_id      = aws_subnet.my_private_subnets[count.index].id
 }
 
 
 resource "aws_route" "private_route" {
-  route_table_id = aws_route_table.private_route_table.id
+  route_table_id = aws_route_table.my_private_route_table.id
 
   gateway_id             = aws_nat_gateway.my_nat_gateway.id
   destination_cidr_block = "0.0.0.0/0"
