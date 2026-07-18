@@ -1,4 +1,42 @@
 
+# === aws vpc/variables.tf ====
+
+variable "aws_region" {
+
+}
+variable "vpc_cidr" {}
+
+variable "public_subnet_count" {
+  type = number
+}
+
+variable "private_subnet_count" {
+  type = number
+}
+
+variable "cluster_public_security_group_name" {}
+variable "cluster_public_security_group_desc" {}
+
+variable "ssh_access_ips" {}
+
+variable "cluster_efs_security_group_name" {}
+variable "cluster_efs_security_group_desc" {}
+
+variable "auto_create_subnet_addresses" {
+  type        = bool
+  description = "To get decision about auto creating subnet cidr addresses"
+}
+
+variable "custom_public_subnet_cidr_addresses" {
+  type        = list(string)
+  description = "If auto_create_subnet_address var is set to false, users to manually input subnet cidr address(es) in a list"
+}
+
+variable "custom_private_subnet_cidr_addresses" {
+  type        = list(string)
+  description = "If auto_create_subnet_address var is set to false, users to manually input subnet cidr address(es) in a list"
+}
+
 # === eks/variables.tf ====
 
 # EKS Cluster Input Variables
@@ -77,43 +115,6 @@ variable "private_nodegroup_max_size" {}
 variable "private_nodegroup_min_size" {}
 variable "private_nodegroup_max_unavail_pctage" {}
 
-# === networking/variables.tf ====
-
-variable "aws_region" {
-
-}
-variable "vpc_cidr" {}
-
-variable "public_subnet_count" {
-  type = number
-}
-
-variable "private_subnet_count" {
-  type = number
-}
-
-variable "cluster_public_security_group_name" {}
-variable "cluster_public_security_group_desc" {}
-
-variable "ssh_access_ips" {}
-
-variable "cluster_efs_security_group_name" {}
-variable "cluster_efs_security_group_desc" {}
-
-variable "auto_create_subnet_addresses" {
-  type        = bool
-  description = "To get decision about auto creating subnet cidr addresses"
-}
-
-variable "custom_public_subnet_cidr_addresses" {
-  type        = list(string)
-  description = "If auto_create_subnet_address var is set to false, users to manually input subnet cidr address(es) in a list"
-}
-
-variable "custom_private_subnet_cidr_addresses" {
-  type        = list(string)
-  description = "If auto_create_subnet_address var is set to false, users to manually input subnet cidr address(es) in a list"
-}
 
 # Cloudwatch, EBS, EFS and Load-Balancer EKS Addon related Variables
 variable "enable_cloudwatch_observability" {
